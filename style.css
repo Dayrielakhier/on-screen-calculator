@@ -1,0 +1,26 @@
+body {
+    max-width: 90vh;
+    max-height: 90vh;
+    margin: auto;
+}
+
+#display {
+    text-align: end;
+    padding: 30px 15px;
+    font-size: xx-large;
+}
+
+.buttons {
+    display: flex;
+    flex: 1;
+}
+
+.buttons button {
+    border: 1px solid black;
+    font-size: x-large;
+    display: flex;
+    flex: 1;
+    justify-content: center;
+    align-items: center;
+    aspect-ratio: 1/1;
+}
