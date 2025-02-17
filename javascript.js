@@ -48,7 +48,6 @@ function operate(num, operator, num2) {
 const digits = document.querySelectorAll(".digit")
 const operators = document.querySelectorAll(".operator")
 const dis = document.querySelector("#display")
-const clear = document.querySelector("#clear")
 
 let isFirstClick1 = true
 let isFirstClick2 = true
@@ -98,4 +97,15 @@ const calc = document.querySelector(".operate")
 calc.addEventListener("click", () => {
     operate(num, operator, num2);
     dis.textContent = result
+})
+
+const clear = document.querySelector("#clear")
+
+clear.addEventListener("click", () => {
+    num = undefined
+    num2 = undefined
+    operator = undefined
+    dis.textContent = 0
+    isFirstClick1 = true
+    isFirstClick2 = true
 })
