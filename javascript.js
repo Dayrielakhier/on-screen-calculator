@@ -88,15 +88,22 @@ digits.forEach((digit) => {
 
 operators.forEach((op) => {
     op.addEventListener("click", () => {
-        operator = op.textContent;
-        
+        if (num1 !== undefined && num2 === undefined) {
+            operator = op.textContent
+        } else if (num1 !== undefined && num2 !== undefined) {
+            operate(num1, operator, num2)
+            dis.textContent = result
+            num1 = result
+            isFirstClick2 = true
+            operator = op.textContent
+        }
     })
 })
 
 const calc = document.querySelector(".operate")
 
 calc.addEventListener("click", () => {
-    operate(num1, operator, num2);
+    operate(num1, operator, num2)
     dis.textContent = result
 })
 
