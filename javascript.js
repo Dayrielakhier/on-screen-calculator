@@ -1,43 +1,43 @@
 function add(a, b) {
     result = a + b
-    return result
 }
 
 function subtract(a, b) {
     result = a - b
-    return result
 }
 
 function multiply(a ,b) {
     result = a * b
-    return result
 }
 
 function divide(a, b) {
-    result = a / b
-    return result
+    if (b === 0) {
+        result = "ERROR!"
+    } else {
+        result = +(a / b).toFixed(10)
+    }
 }
 
-let num
+let num1
 let operator
 let num2
 
-function operate(num, operator, num2) {
+function operate(num1, operator, num2) {
     switch(operator) {
         case '+':
-            add(num, num2);
+            add(num1, num2);
             break;
 
         case '−':
-            subtract(num, num2);
+            subtract(num1, num2);
             break;
         
         case '×':
-            multiply(num, num2);
+            multiply(num1, num2);
             break;
 
         case '÷':
-            divide(num, num2);
+            divide(num1, num2);
             break;
 
         default:
@@ -52,7 +52,7 @@ const dis = document.querySelector("#display")
 let isFirstClick1 = true
 let isFirstClick2 = true
 
-function getNum(digit) {
+function getNum1(digit) {
     if (isFirstClick1) {
         dis.textContent = ""
         dis.textContent += digit.textContent
@@ -61,7 +61,7 @@ function getNum(digit) {
     } else {
         dis.textContent += digit.textContent
     }
-        num = +(dis.textContent);
+        num1 = +(dis.textContent);
 }
 
 function getNum2(digit) {
@@ -79,7 +79,7 @@ function getNum2(digit) {
 digits.forEach((digit) => {
     digit.addEventListener("click", () => {
         if (typeof operator === 'undefined') {
-            getNum(digit)
+            getNum1(digit)
         } else {
             getNum2(digit)
         }
@@ -88,21 +88,22 @@ digits.forEach((digit) => {
 
 operators.forEach((op) => {
     op.addEventListener("click", () => {
-        operator = op.textContent
+        operator = op.textContent;
+        
     })
 })
 
 const calc = document.querySelector(".operate")
 
 calc.addEventListener("click", () => {
-    operate(num, operator, num2);
+    operate(num1, operator, num2);
     dis.textContent = result
 })
 
 const clear = document.querySelector("#clear")
 
 clear.addEventListener("click", () => {
-    num = undefined
+    num1 = undefined
     num2 = undefined
     operator = undefined
     dis.textContent = 0
