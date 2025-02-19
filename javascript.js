@@ -78,6 +78,10 @@ function getNum2(digit) {
 
 digits.forEach((digit) => {
     digit.addEventListener("click", () => {
+        digit.style.opacity = 0.5
+
+        setTimeout(() => {digit.style.opacity = 'initial'}, 100)
+
         if (typeof operator === 'undefined') {
             getNum1(digit)
         } else {
@@ -110,10 +114,30 @@ calc.addEventListener("click", () => {
 const clear = document.querySelector("#clear")
 
 clear.addEventListener("click", () => {
+    clear.style.opacity = 0.5
+
+    setTimeout(() => {clear.style.opacity = 'initial'}, 100)
+
     num1 = undefined
     num2 = undefined
     operator = undefined
     dis.textContent = 0
     isFirstClick1 = true
     isFirstClick2 = true
+})
+
+const backspace = document.querySelector("#backspace")
+
+backspace.addEventListener("click", () => {
+    backspace.style.opacity = 0.5
+
+    setTimeout(() => {backspace.style.opacity = 'initial'}, 100)
+
+    if (dis.textContent == num1) {
+        num1 = +num1.toString().slice(0, -1)
+        dis.textContent = num1
+    } else if (dis.textContent == num2) {
+        num2 = +num2.toString().slice(0, -1)
+        dis.textContent = num2
+    }
 })
