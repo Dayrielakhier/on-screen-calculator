@@ -78,15 +78,17 @@ function getNum2(digit) {
 
 digits.forEach((digit) => {
     digit.addEventListener("click", () => {
-        digit.style.opacity = 0.5
-
-        setTimeout(() => {digit.style.opacity = 'initial'}, 100)
-
         if (operator === undefined) {
             getNum1(digit)
         } else {
             getNum2(digit)
         }
+    })
+    digit.addEventListener("mousedown", () => {
+        digit.style.opacity = 0.5
+    })
+    digit.addEventListener("mouseup", () => {
+        digit.style.opacity = "initial"
     })
 })
 
@@ -104,7 +106,7 @@ operators.forEach((op) => {
     })
 })
 
-const calc = document.querySelector(".operate")
+const calc = document.querySelector("#operate")
 
 calc.addEventListener("click", () => {
     if (num1 !== undefined && operator !== undefined && num2 !== undefined) {
@@ -118,10 +120,6 @@ calc.addEventListener("click", () => {
 const clear = document.querySelector("#clear")
 
 clear.addEventListener("click", () => {
-    clear.style.opacity = 0.5
-
-    setTimeout(() => {clear.style.opacity = 'initial'}, 100)
-
     num1 = undefined
     num2 = undefined
     operator = undefined
@@ -129,14 +127,16 @@ clear.addEventListener("click", () => {
     isFirstClick1 = true
     isFirstClick2 = true
 })
+clear.addEventListener("mousedown", () => {
+    clear.style.opacity = 0.5
+})
+clear.addEventListener("mouseup", () => {
+    clear.style.opacity = "initial"
+})
 
 const backspace = document.querySelector("#backspace")
 
 backspace.addEventListener("click", () => {
-    backspace.style.opacity = 0.5
-
-    setTimeout(() => {backspace.style.opacity = 'initial'}, 100)
-
     if (dis.textContent == num1) {
         num1 = +num1.toString().slice(0, -1)
         dis.textContent = num1
@@ -144,4 +144,26 @@ backspace.addEventListener("click", () => {
         num2 = +num2.toString().slice(0, -1)
         dis.textContent = num2
     }
+})
+backspace.addEventListener("mousedown", () => {
+    backspace.style.opacity = 0.5
+})
+backspace.addEventListener("mouseup", () => {
+    backspace.style.opacity = "initial"
+})
+
+const decimal = document.querySelector("#decimal")
+
+decimal.addEventListener("click", () => {
+   if (dis.textContent.includes(decimal.textContent)) {
+    dis.textContent = dis.textContent
+   } else {
+    dis.textContent += decimal.textContent
+   }
+})
+decimal.addEventListener("mousedown", () => {
+    decimal.style.opacity = 0.5
+})
+decimal.addEventListener("mouseup", () => {
+    decimal.style.opacity = "initial"
 })
