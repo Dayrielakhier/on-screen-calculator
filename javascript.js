@@ -82,7 +82,7 @@ digits.forEach((digit) => {
 
         setTimeout(() => {digit.style.opacity = 'initial'}, 100)
 
-        if (typeof operator === 'undefined') {
+        if (operator === undefined) {
             getNum1(digit)
         } else {
             getNum2(digit)
@@ -107,8 +107,12 @@ operators.forEach((op) => {
 const calc = document.querySelector(".operate")
 
 calc.addEventListener("click", () => {
-    operate(num1, operator, num2)
-    dis.textContent = result
+    if (num1 !== undefined && operator !== undefined && num2 !== undefined) {
+        operate(num1, operator, num2)
+        dis.textContent = result
+    } else {
+        dis.textContent = dis.textContent
+    }
 })
 
 const clear = document.querySelector("#clear")
