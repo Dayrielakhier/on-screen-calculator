@@ -36,3 +36,7 @@ button#clear,
 button#backspace {
     aspect-ratio: 2/1;
 }
+
+.operator:focus {
+    opacity: 0.5;
+}
