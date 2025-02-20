@@ -96,11 +96,13 @@ operators.forEach((op) => {
     op.addEventListener("click", () => {
         if (num1 !== undefined && num2 === undefined) {
             operator = op.textContent
-        } else if (num1 !== undefined && num2 !== undefined) {
+        } else if (num1 !== undefined && num2 !== undefined && isFirstClick2 === false) {
             operate(num1, operator, num2)
             dis.textContent = result
             num1 = result
             isFirstClick2 = true
+            operator = op.textContent
+        } else {
             operator = op.textContent
         }
     })
@@ -115,6 +117,12 @@ calc.addEventListener("click", () => {
     } else {
         dis.textContent = dis.textContent
     }
+})
+calc.addEventListener("mousedown", () => {
+    calc.style.opacity = 0.5
+})
+calc.addEventListener("mouseup", () => {
+    calc.style.opacity = "initial"
 })
 
 const clear = document.querySelector("#clear")
